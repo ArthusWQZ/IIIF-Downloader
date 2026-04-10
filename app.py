@@ -16,6 +16,8 @@ if st.button("Télécharger l'image", disabled=not base_url):
     progress_text = st.empty()
     progress_bar = st.progress(0)
 
+    base_url = base_url.rstrip("/")  # Supprimer les slashs finaux
+
     try:
         progress_text.text("Récupération des métadonnées (info.json)…")
         r = requests.get(f"{base_url}/info.json", impersonate="chrome", timeout=30)
